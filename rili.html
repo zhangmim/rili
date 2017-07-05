@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .mian{
+            width: 420px;
+            margin:0 auto;;
+        }
+        h2{
+            text-align: center;
+        }
+        .week{
+            margin: 0 auto;
+            text-align: center;
+        }
+        .week span{
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+            background: paleturquoise;
+            border: 1px solid;
+            box-sizing: border-box;
+            text-align: center;
+            line-height: 30px;
+        }
+        .empty{
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: pink;
+            border: 1px solid;
+            box-sizing: border-box;
+            text-align: center;
+            line-height: 60px;
+        }
+        .empty1{
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: plum;
+            border: 1px solid;
+            box-sizing: border-box;
+            text-align: center;
+            line-height: 60px;
+        }
+    </style>
+    <script>
+        var nian=prompt("请输入年");
+        var month=prompt("请输入月");
+        document.write("<h2>"+nian+"年"+month+"月</h2>");
+    </script>
+
+</head>
+<body>
+<div class="mian">
+<div class="week">
+    <span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span>
+</div>
+
+
+<script>
+    //从1900年到输入年的前一年的总天数
+    var day=0;
+    for(year=1900;year<nian;year++){
+        if(year%4==0&&year%100!=0||year%400==0){
+                day=day+366;
+            }
+            else{
+                day=day+365;
+            }
+    }
+//    document.write(day);
+    //从1月到输入月的前一月的总天数
+    var monthdays=0;
+    for(i=1;i<month;i++){
+        if(i==4||i==6||i==9||i==11){
+            monthdays=monthdays+30;
+        }
+        else if(i==2) {
+            if (nian%4==0&&nian%100!=0||nian%400== 0) {
+                monthdays = monthdays + 29;
+            }
+            else {
+                monthdays = monthdays + 28;
+            }
+        }
+        else if(i==1||i==3||i==5||i==7||i==8||i==10||i==12){
+            monthdays=monthdays+31;
+        }
+    }
+//    document.write("<br>"+monthdays);
+
+    //判断月份的1号是星期几
+    var tatle=day+monthdays+1;
+    var week=tatle%7;
+//    document.write("<br>"+week);
+    if(week==0){
+        week=7;
+    }
+    //空的格
+    for(var k=1;k<week;k++){
+        document.write("<span class='empty'>&nbsp;</span>");
+    }
+
+    if(month==2){
+        if (nian%4==0&&nian%100!=0||nian%400==0) {
+            tian=29;
+        }
+        else {
+            tian=28;
+        }
+    }
+     else if(month==1||month==3||month==5||month==7||month==8||month==10||month==12){
+        tian=31;
+    }
+    else{
+        tian=30;
+    }
+    //有数的格
+    for(s=1;s<=tian;s++){
+        document.write("<span class='empty1'>"+s+"</span>")
+    }
+</script>
+</div>
+</body>
+</html>
